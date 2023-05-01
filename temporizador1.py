@@ -4,7 +4,7 @@ class Timer:
     def __init__(self, master):
         self.master = master
         self.master.title("Temporizador")
-        self.master.config(bg="#e0e0e0") # Agregamos un color de fondo a la ventana
+        self.master.config(bg="#B0BEC5") # Agregamos un color de fondo a la ventana
 
 
         # Inicializamos los valores
@@ -13,14 +13,14 @@ class Timer:
         self.reset_count = 0
 
         # Creamos los widgets
-        self.timer_label = tk.Label(self.master, text="05:00", font=("Helvetica", 50), fg="#000000", bg="#0979b0", width=8, height=1)
-        self.reset_button = tk.Button(self.master, text="MENSAJE", command=self.reset_timer_count, bg="#0979b0", fg="#ffffff", font=("Helvetica", 16), width=22, height=2)
-        self.sticker_button = tk.Button(self.master, text="MENSAJE Y STICKER", command=self.reset_timer_sticker, bg="#0979b0", fg="#ffffff", font=("Helvetica", 16), width=22, height=2)
-        self.reset_only_button = tk.Button(self.master, text="FOTO", command=self.reset_timer, bg="#0979b0", fg="#ffffff", font=("Helvetica", 16), width=22, height=2)
+        self.timer_label = tk.Label(self.master, text="05:00", font=("Helvetica", 50), fg="#ffffff", bg="#607D8B", width=8, height=1)
+        self.reset_button = tk.Button(self.master, text="MENSAJE", command=self.reset_timer_count, bg="#607D8B", fg="#ffffff", font=("Helvetica", 16), width=22, height=2)
+        self.sticker_button = tk.Button(self.master, text="MENSAJE Y STICKER", command=self.reset_timer_sticker, bg="#607D8B", fg="#ffffff", font=("Helvetica", 16), width=22, height=2)
+        self.reset_only_button = tk.Button(self.master, text="FOTO", command=self.reset_timer, bg="#607D8B", fg="#ffffff", font=("Helvetica", 16), width=22, height=2)
         # self.stop_button = tk.Button(self.master, text="Detener", command=self.stop_timer, bg="#ffffff", fg="#000000", font=("Helvetica", 16))
-        self.reset_count_label = tk.Label(self.master, text="Mensajes: 0", bg="#e0e0e0", font=("Helvetica", 25))
-        self.sticker_count_label = tk.Label(self.master, text="Stickers: 0", bg="#e0e0e0", font=("Helvetica", 25))
-        self.photo_count_label = tk.Label(self.master, text="Foto: 0", bg="#e0e0e0", font=("Helvetica", 25))
+        self.reset_count_label = tk.Label(self.master, text="Mensajes: 0", bg="#B0BEC5", font=("Helvetica", 25))
+        self.sticker_count_label = tk.Label(self.master, text="Stickers: 0", bg="#B0BEC5", font=("Helvetica", 25))
+        # self.photo_count_label = tk.Label(self.master, text="Foto: 0", font=("Helvetica", 25))
 
         # Los colocamos en la ventana
         self.timer_label.pack(pady=20)
@@ -41,8 +41,8 @@ class Timer:
         seconds = self.total_time % 60
         self.timer_label.config(text=f"{minutes:02d}:{seconds:02d}")
 
-        if self.total_time == -5:
-            self.stop_timer()
+        if self.total_time == 0:
+            pass
         else:
             self.total_time -= 1
             self.timer_id = self.master.after(1000, self.timer)
